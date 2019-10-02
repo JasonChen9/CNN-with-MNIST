@@ -57,7 +57,7 @@ def cnn_model(x):
     h_conv2 = tf.nn.relu(conv2d(h_pool1, W_conv2) + b_conv2)#卷积加偏置项再激活
     h_pool2 = max_pool_2x2(h_conv2)#进行池化
     #设置密集连接层
-    W_fc1 = weight_variable([7 * 7 * 64, 1024])#经过第一次卷积图片变为24*24 再池化变为12*12 再卷积变为8*8 再池化变为7*7 然后有64个特征
+    W_fc1 = weight_variable([7 * 7 * 64, 1024])
     b_fc1 = bias_variable([1024])#由于我们加入了一个1024个神经元的全连接层，就设置了1024个偏置项
     h_pool2_flat = tf.reshape(h_pool2, [-1, 7 * 7 * 64])#转换数据类型
     h_fc1 = tf.nn.relu(tf.matmul(h_pool2_flat, W_fc1) + b_fc1)#乘上权重再加上偏置项再激活
